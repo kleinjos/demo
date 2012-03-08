@@ -6,18 +6,18 @@
 
     <script src="leaflet.js"></script>
     <script src="wax.leaf.min.js"></script>
-
-    <script src="museums.js"></script>
+    <script src="personhood.js"></script>
   </head>
   <body>
     <div id="mapbox" style="width: 800px; height: 400px"></div>
     <script type="text/javascript">
     
     // Define a custom icon using the Maki museum icon
+    // define url to remote MapBox until icons hosted locally         iconUrl: '/images/marker.png',    
     var museumIcon = L.Icon.extend({
-        iconUrl: 'museum-24.png',
+        iconUrl: 'http://mapbox.com/demo/mapbox-streets/images/marker.png',
         shadowUrl: null,
-        iconSize: new L.Point(24, 24),
+        iconSize: new L.Point(24, 40),
         shadowSize: null,
         iconAnchor: new L.Point(12, 24),
         popupAnchor: new L.Point(0,-24)
@@ -33,8 +33,11 @@
     });
 
     // Define the map to use from MapBox
+    //mapbox-streets
     var url = 'http://api.tiles.mapbox.com/v3/mapbox.mapbox-streets.jsonp';
-
+  //mapbox-light
+	//var url = 'http://a.tiles.mapbox.com/v3/mapbox.mapbox-light.jsonp';
+	
     // Get metadata about the map from MapBox
     wax.tilejson(url,function(tilejson) {
           
@@ -42,7 +45,7 @@
         var map = new L.Map('mapbox')  // container's id="mapbox"
           
         // Center the map on Washington, DC, at zoom 15
-        .setView(new L.LatLng(38.9, -77.035), 15)
+        .setView(new L.LatLng(38.9, -77.035), 5)
 
         // Add MapBox Streets as a base layer
         .addLayer(new wax.leaf.connector(tilejson))
