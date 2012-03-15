@@ -81,17 +81,7 @@ wvar data = {
             "name" : "Occupy Oakland Courts"
         }
    	},         
-    { 
-        "type": "Feature",
-        "geometry": { 
-            "type": "Point",
-            "coordinates": [-77.03303, 38.905]
-    	}, 
-        "properties": {
-            "name" : "Occupy DC Corporate Personhood Solutions Working Group"
-        }
-    },
-    {
+	{
 		"type": "Feature",
 		"geometry": { 
             "type": "Point",
