@@ -1,0 +1,69 @@
+
+<html><head>
+		<title>OCCUPY DATA</title>
+		<link href="leaflet.css" rel="stylesheet" media="screen" type="text/css" >		<link href="main.css" rel="stylesheet" type="text/css" >
+         <!--[if lte IE 8]><link rel="stylesheet" href="leaflet.ie.css" /><![endif]-->
+
+         <script type="text/javascript" src="leaflet.js" ></script>
+         <script type="text/javascript" src="wax.leaf.min.js" ></script>
+         <script type="text/javascript" src="hackathon.js" ></script><link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" media="screen" type="text/css" ><link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" media="screen" type="text/css" ><link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" media="screen" type="text/css" ></head><body style="background-color:#CECECE; left:161px; top:49px; " id="body .body" >
+	<div style="position:relative; float:none; margin-left:auto; margin-right:auto; display:block; width:819px; height:1303px; " >
+		
+		<div style="left:0; top:30px; " id="topbar" >OCCUPY DATA { JOIN_US }<br>
+    <div id="mapbox" style="width:800px; height:400px; " >
+
+    <script type="text/javascript" >
+    
+    // Define a custom icon using the Maki museum icon
+    // define url to remote MapBox until icons hosted locally         iconUrl: '/images/marker.png',    
+    var museumIcon = L.Icon.extend({
+        iconUrl: 'http://mapbox.com/demo/mapbox-streets/images/marker.png',
+        shadowUrl: null,
+        iconSize: new L.Point(24, 40),
+        shadowSize: null,
+        iconAnchor: new L.Point(12, 24),
+        popupAnchor: new L.Point(0,-24)
+    });
+
+    // Define a geojson data layer
+    var geojsonLayer = new L.GeoJSON(data, {
+      pointToLayer: function (latlng) {
+        return new L.Marker(latlng, {
+          icon: new museumIcon()
+        });
+      }      
+    });
+
+    // Define the map to use from MapBox
+    //mapbox-streets
+    var url = 'http://api.tiles.mapbox.com/v3/mapbox.mapbox-streets.jsonp';
+  //mapbox-light
+	//var url = 'http://a.tiles.mapbox.com/v3/mapbox.mapbox-light.jsonp';
+	
+    // Get metadata about the map from MapBox
+    wax.tilejson(url,function(tilejson) {
+          
+        // Make a new Leaflet map in your container div
+        var map = new L.Map('mapbox')  // container's id="mapbox"
+          
+        // Center the map on Washington, DC, at zoom 15
+        .setView(new L.LatLng(38.90536, -77.04295), 15)
+
+        // Add MapBox Streets as a base layer
+        .addLayer(new wax.leaf.connector(tilejson))
+        
+        // Add the geojson layer
+        .addLayer(geojsonLayer);
+        
+        // Display the name property on click
+        geojsonLayer.on("featureparse", function (e) {
+            if (e.properties && e.properties.name){
+                e.layer.bindPopup(e.properties.name);
+            }
+        });
+        
+        // Populate our geojson layer with data
+        geojsonLayer.addGeoJSON(data);
+    });
+    </script>
+</div><div id="description" <="" div="" style="left:172px; top:150px; " ></div></div></div><div></div><div style="position:absolute; height:268px; width:720px; left:175px; top:440px; " >The Data Committee at Occupy DC invites you to attend the 2nd<div style="position:absolute; height:268px; width:720px; left:0; top:265px; " >Occupy DC General Assembly Approves Data Committee Proposal<br>A Data Committee shall be formed. Its purpose will be to:<ul><li>Act as a resource for various entities within Occupy DC and the national Occupy movement to strengthen initiatives through data gathering, sensitive to legal and licensing issues, analysis, and visualization<br>Develop Occupy Data projects to address overarching grievances of the various Occupy locations across the United States, which may include economic inequality, identity-based discrimination and (in)equality of opportunity, corruption, lobbying, campaign finance, militarization, the financial crisis, the criminal (in)justice system, destruction of the global ecosystem, mortgages and foreclosures, and related themes<br>Coordinate with local and national open data advocates, developers, and technologists on existing open data, open government, and linked data projects<br>Establish an Occupy Data website to serve as a clearinghouse for data sources, tutorials, and visualization tools<br>Coordinate with local technology and data organizations to hold teach ins for members of Occupy DC, Occupy Data, and the general public<br>Practice radical transparency</li></ul></div> Occupy Hackathon<br>WHAT:<br>WHY:<br>WHEN:<br>WHERE:</div></body></html>
