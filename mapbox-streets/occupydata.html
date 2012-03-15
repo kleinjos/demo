@@ -1,12 +1,12 @@
 <html>
   <head>
-    <title>Museums in Washington, DC</title>
+    <title>Occupy Data</title>
     <link rel="stylesheet" href="leaflet.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="leaflet.ie.css" /><![endif]-->
 
     <script src="leaflet.js"></script>
     <script src="wax.leaf.min.js"></script>
-    <script src="globaloccupy.js"></script>
+    <script src="occupydata.js"></script>
   </head>
   <body>
     <div id="mapbox" style="width: 800px; height: 400px"></div>
@@ -45,7 +45,7 @@
         var map = new L.Map('mapbox')  // container's id="mapbox"
           
         // Center the map on Washington, DC, at zoom 15
-        .setView(new L.LatLng(38.9, -77.035), 5)
+        .setView(new L.LatLng(38.9, -77.035), 15)
 
         // Add MapBox Streets as a base layer
         .addLayer(new wax.leaf.connector(tilejson))
