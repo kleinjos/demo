@@ -1,68 +1,22 @@
 <html>
-  <head>
-    <title>Corporate Personhood Solutions Working Groups</title>
-    <link rel="stylesheet" href="leaflet.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="leaflet.ie.css" /><![endif]-->
-
-    <script src="leaflet.js"></script>
-    <script src="wax.leaf.min.js"></script>
-    <script src="personhood.js"></script>
-  </head>
-  <body>
-    <div id="mapbox" style="width: 800px; height: 400px"></div>
-    <script type="text/javascript">
-    
-    // Define a custom icon using the Maki museum icon
-    // define url to remote MapBox until icons hosted locally         iconUrl: '/images/marker.png',    
-    var museumIcon = L.Icon.extend({
-        iconUrl: 'http://mapbox.com/demo/mapbox-streets/images/marker.png',
-        shadowUrl: null,
-        iconSize: new L.Point(24, 40),
-        shadowSize: null,
-        iconAnchor: new L.Point(12, 24),
-        popupAnchor: new L.Point(0,-24)
-    });
-
-    // Define a geojson data layer
-    var geojsonLayer = new L.GeoJSON(data, {
-      pointToLayer: function (latlng) {
-        return new L.Marker(latlng, {
-          icon: new museumIcon()
-        });
-      }      
-    });
-
-    // Define the map to use from MapBox
-    //mapbox-streets
-    var url = 'http://api.tiles.mapbox.com/v3/mapbox.mapbox-streets.jsonp';
-  //mapbox-light
-	//var url = 'http://a.tiles.mapbox.com/v3/mapbox.mapbox-light.jsonp';
-	
-    // Get metadata about the map from MapBox
-    wax.tilejson(url,function(tilejson) {
-          
-        // Make a new Leaflet map in your container div
-        var map = new L.Map('mapbox')  // container's id="mapbox"
-          
-        // Center the map on Washington, DC, at zoom 15
-        .setView(new L.LatLng(38.9, -77.035), 5)
-
-        // Add MapBox Streets as a base layer
-        .addLayer(new wax.leaf.connector(tilejson))
-        
-        // Add the geojson layer
-        .addLayer(geojsonLayer);
-        
-        // Display the name property on click
-        geojsonLayer.on("featureparse", function (e) {
-            if (e.properties && e.properties.name){
-                e.layer.bindPopup(e.properties.name);
-            }
-        });
-        
-        // Populate our geojson layer with data
-        geojsonLayer.addGeoJSON(data);
-    });
-    </script>
-  </body>
+<head>
+		<title>Occupy Color-Taker Map</title>
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,300italic,700italic' rel='stylesheet' type='text/css'>
+		<link href="styles.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+	<div class="topbar"> OCCUPY DATA { JOIN_US }</div>
+    <div class="map"> 
+		<div class="red"><iframe width='750' height='500' frameBorder='0' src='http://a.tiles.mapbox.com/v3/occupy.color-cover,occupy.color-taker.html#4/38.273/-95.352'></iframe></div> 
+		<div class="orange"><iframe width='750' height='500' frameBorder='0' src='http://a.tiles.mapbox.com/v3/occupy.color-cover,occupy.color-taker.html#4/38.273/-95.352'></iframe></div> 
+		<div class="yellow"><iframe width='750' height='500' frameBorder='0' src='http://a.tiles.mapbox.com/v3/occupy.color-cover,occupy.color-taker.html#4/38.273/-95.352'></iframe></div> 
+		<div class="green"><iframe width='750' height='500' frameBorder='0' src='http://a.tiles.mapbox.com/v3/occupy.color-cover,occupy.color-taker.html#4/38.273/-95.352'></iframe></div> 
+		<div class="ltblue"><iframe width='750' height='500' frameBorder='0' src='http://a.tiles.mapbox.com/v3/occupy.color-cover,occupy.color-taker.html#4/38.273/-95.352'></iframe></div> 
+		<div class="dkblue"><iframe width='750' height='500' frameBorder='0' src='http://a.tiles.mapbox.com/v3/occupy.color-cover,occupy.color-taker.html#4/38.273/-95.352'></iframe></div> 
+		<div class="purple"><iframe width='750' height='500' frameBorder='0' src='http://a.tiles.mapbox.com/v3/occupy.color-cover,occupy.color-taker.html#4/38.273/-95.352'></iframe></div> 
+		<div class="brown"><iframe width='750' height='500' frameBorder='0' src='http://a.tiles.mapbox.com/v3/occupy.color-cover,occupy.color-taker.html#4/38.273/-95.352'></iframe></div> 
+		
+	<div class="bottombar"> These are all one single map. <br>Check out all of our maps at <a href=""Mapbox.: "http://tiles.mapbox.com/occupy" target="_blank">MapBox</a>. 
+		</div>
+</body>
 </html>
